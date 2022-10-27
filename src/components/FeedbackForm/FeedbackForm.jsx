@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Statistics } from '../Statistics';
 import { FeedbackOptions } from '../FeedbackOptions';
+import { Section } from '../Section';
 
 export class FeedbackForm extends Component {
   state = {
@@ -35,19 +36,21 @@ export class FeedbackForm extends Component {
     return (
       <>
         <h1>Please leave feedback</h1>
-
-        <FeedbackOptions
-          options={Object.keys(this.state)}
-          onLeaveFeedback={this.handleIncrement}
-        />
-
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
-          positivePercentage={positivePercentage}
-        />
+        <Section title="">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.handleIncrement}
+          />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positivePercentage}
+          />
+        </Section>
       </>
     );
   }
