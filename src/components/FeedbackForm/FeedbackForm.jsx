@@ -35,10 +35,12 @@ export class FeedbackForm extends Component {
     return (
       <>
         <p>Please leave feedback</p>
+
         <FeedbackOptions
-          options={null}
+          options={Object.keys(this.state)}
           onLeaveFeedback={this.handleIncrement}
         />
+
         <Statistics
           good={good}
           neutral={neutral}
