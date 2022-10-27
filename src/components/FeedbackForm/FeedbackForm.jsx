@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { Statistics } from '../Statistics';
+import { FeedbackOptions } from '../FeedbackOptions';
 
 export class FeedbackForm extends Component {
   state = {
@@ -21,43 +23,29 @@ export class FeedbackForm extends Component {
     if (total === 0) {
       return 0;
     }
-    
-    return (Math.round((this.state.good  / total) * 100));
+
+    return Math.round((this.state.good / total) * 100);
   };
 
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
-    const percentage = this.countPositiveFeedbackPercentage(total);
+    const positivePercentage = this.countPositiveFeedbackPercentage(total);
 
     return (
       <>
         <p>Please leave feedback</p>
-        <button type="button" name="good" onClick={this.handleIncrement}>
-          Good
-        </button>
-        <button type="button" name="neutral" onClick={this.handleIncrement}>
-          Neutral
-        </button>
-        <button type="button" name="bad" onClick={this.handleIncrement}>
-          Bad
-        </button>
-        <p>Statistics</p>
-        <p>
-          Good:<span>{good}</span>
-        </p>
-        <p>
-          Neutral:<span>{neutral}</span>
-        </p>
-        <p>
-          Bad:<span>{bad}</span>
-        </p>
-        <p>
-          Total:<span>{total}</span>
-        </p>
-        <p>
-          Positive feedback:<span>{percentage}%</span>
-        </p>
+        <FeedbackOptions
+          options={null}
+          onLeaveFeedback={this.handleIncrement}
+        />
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          positivePercentage={positivePercentage}
+        />
       </>
     );
   }
