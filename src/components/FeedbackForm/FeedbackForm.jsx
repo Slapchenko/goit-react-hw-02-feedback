@@ -34,7 +34,7 @@ export class FeedbackForm extends Component {
 
     return (
       <>
-        <p>Please leave feedback</p>
+        <h1>Please leave feedback</h1>
 
         <FeedbackOptions
           options={Object.keys(this.state)}
